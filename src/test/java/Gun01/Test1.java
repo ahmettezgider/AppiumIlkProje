@@ -1,4 +1,4 @@
-package tests;
+package Gun01;
 
 
 import io.appium.java_client.AppiumDriver;

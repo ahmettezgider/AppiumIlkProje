@@ -1,4 +1,4 @@
-package tests;
+package Gun01;
 
 
 import io.appium.java_client.AppiumDriver;
@@ -9,37 +9,35 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
+import utils.App;
+import utils.Device;
 
 import java.net.MalformedURLException;
-import java.net.URL;
 
-public class Test2 {
+public class Test3 {
 
     AppiumDriverLocalService service;
+
+    Device device = Device.PIXEL2;
+    App app = App.APIDEMO;
 
     @Test
     public void test1() throws MalformedURLException {
 
         service = new AppiumServiceBuilder()
                 .withIPAddress("127.0.0.1")
-                //.usingPort(1111)
                 .usingAnyFreePort()
                 .build();
         service.start();
 
-
-        // Desired capability
-        // hangi cihaz ve hangi uygulamaya baglanilacak
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("appium:udid", "emulator-5554");
-        capabilities.setCapability("appium:version", "11");
-        capabilities.setCapability("appium:deviceName", "Pixel2");
-        capabilities.setCapability("platformName", "Android");
+        capabilities.setCapability("appium:udid", device.udid);
+        capabilities.setCapability("appium:version", device.version);
+        capabilities.setCapability("appium:deviceName", device.deviceName);
+        capabilities.setCapability("platformName", device.platformName);
 
-        capabilities.setCapability("appium:appPackage", "io.appium.android.apis");
-        capabilities.setCapability("appium:appActivity", "io.appium.android.apis.ApiDemos");
-
-        // RemoteWebDriver -> WebDriver -> AppiumDriver --> (AndroidDriver, iOSDriver)
+        capabilities.setCapability("appium:appPackage", app.appPackage);
+        capabilities.setCapability("appium:appActivity", app.appActivity);
 
         AppiumDriver<MobileElement> driver;
 
