@@ -5,8 +5,12 @@ public enum Device {
     PIXEL2("emulator-5554",
             "11",
             "Pixel2",
-            "Android");
-
+            "Android"),
+    SAMSUNG_A33(
+            "RZCT40MN7MY",
+            "12",
+            "My Phone",
+            "ANdroid");
 
     public String udid;
     public String version;
@@ -19,4 +23,4 @@ public enum Device {
         this.deviceName = deviceName;
         this.platformName = platformName;
     }
-}
+    }

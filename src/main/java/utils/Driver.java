@@ -8,6 +8,8 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.io.File;
+
 public class Driver {
 
     private static AppiumDriver<MobileElement> driver;
@@ -16,9 +18,11 @@ public class Driver {
 
     public static void runAppium(){
         service = new AppiumServiceBuilder()
+                //.withLogFile(new File("appium.log"))
                 .withIPAddress("127.0.0.1")
                 .usingAnyFreePort()
                 .build();
+        service.clearOutPutStreams();
         service.start();
     }
 
