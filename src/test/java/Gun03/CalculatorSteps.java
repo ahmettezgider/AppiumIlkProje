@@ -1,3 +1,4 @@
+
 package Gun03;
 
 import io.appium.java_client.AppiumDriver;
@@ -10,18 +11,20 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import utils.App;
-import utils.Device;
 import utils.Driver;
 
-import java.util.List;
 
-import static utils.Utils.openApp;
+import java.util.List;
 
 public class CalculatorSteps {
 
     AppiumDriver<?> driver;
     WebDriverWait wait;
+    {
+        driver = Driver.getDriver();
+        wait = new WebDriverWait(driver, 20);
+    }
+
 
     By lButtonAdd = By.id("calc_keypad_btn_add");
     By lButtonEqual = By.id("calc_keypad_btn_equal");
@@ -31,8 +34,9 @@ public class CalculatorSteps {
 
     @Given("user on start page")
     public void userOnStartPage() {
-        driver = openApp(Device.SAMSUNG_A33, App.CALCULATOR);
-        wait = new WebDriverWait(driver, 20);
+        //driver = openApp(Device.SAMSUNG_A33, App.CALCULATOR);
+        //wait = new WebDriverWait(driver, 20);
+        driver.resetApp();
     }
 
     @When("user sum the following numbers")

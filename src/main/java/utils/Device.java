@@ -10,7 +10,7 @@ public enum Device {
             "RZCT40MN7MY",
             "12",
             "My Phone",
-            "ANdroid");
+            "Android");
 
     public String udid;
     public String version;
@@ -23,4 +23,9 @@ public enum Device {
         this.deviceName = deviceName;
         this.platformName = platformName;
     }
+
+    @Override
+    public String toString() {
+        return this.name();
     }
+}
