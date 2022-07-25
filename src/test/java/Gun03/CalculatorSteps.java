@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -37,6 +38,7 @@ public class CalculatorSteps {
         //driver = openApp(Device.SAMSUNG_A33, App.CALCULATOR);
         //wait = new WebDriverWait(driver, 20);
         driver.resetApp();
+        driver.rotate(ScreenOrientation.LANDSCAPE);
     }
 
     @When("user sum the following numbers")
@@ -56,6 +58,7 @@ public class CalculatorSteps {
     @Then("the result should be {int}")
     public void theResultShouldBe(int result) {
         Assert.assertTrue(driver.findElement(lScreen).getText().contains(result+""));
+        driver.rotate(ScreenOrientation.PORTRAIT);
     }
 
     public void click(By locator){

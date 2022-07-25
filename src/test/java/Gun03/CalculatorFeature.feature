@@ -10,5 +10,3 @@ Feature: Calculator functionality
 
     Then  the result should be 6
 
-    Scenario: aaaa
-      Given user on start page
