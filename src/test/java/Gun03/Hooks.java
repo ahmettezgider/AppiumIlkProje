@@ -1,5 +1,6 @@
 package Gun03;
 
+
 import io.cucumber.java.BeforeAll;
 import utils.App;
 import utils.Device;
@@ -13,5 +14,6 @@ public class Hooks {
     public static void beforeAll(){
         if(Driver.getDriver() == null)
             openApp(Device.SAMSUNG_A33, App.CALCULATOR);
+
     }
 }
