@@ -66,15 +66,21 @@ public class Scroll1 {
         wait.until(ExpectedConditions.visibilityOfElementLocated(lAutoComlete));
         swipeUntil(lTextSwitcher);
 
+        driver.hideKeyboard();
     }
 
     public void swipeUntil(By locator){
         while (driver.findElements(locator).size()<=0)
-            swipe(.6, .4);
+            swipeV(.6, .4);
     }
 
 
-    public void swipe(double startPoint, double stopPoint){
+    /**
+     * ekranda swipe islemi yapar
+     * @param startPoint yüzde olarak 0, 1 arasi double sayi
+     * @param stopPoint  yüzde olarak 0, 1 arasi double
+     */
+    public void swipeV(double startPoint, double stopPoint){
         int w = driver.manage().window().getSize().width;
         int h = driver.manage().window().getSize().height;
 
@@ -86,7 +92,22 @@ public class Scroll1 {
                 .perform();
     }
 
+    /**
+     * ekranda swipe islemi yapar
+     * @param startPoint yüzde olarak 0, 1 arasi double sayi
+     * @param stopPoint  yüzde olarak 0, 1 arasi double
+     */
+    public void swipeH(double startPoint, double stopPoint){
+        int w = driver.manage().window().getSize().width;
+        int h = driver.manage().window().getSize().height;
 
+        new TouchAction<>(driver)
+                .press(PointOption.point((int)(w*startPoint), h/2))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+                .moveTo(PointOption.point((int)(w*stopPoint), h/2))
+                .release()
+                .perform();
+    }
 
     @AfterTest
     public void afterTest(){

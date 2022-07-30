@@ -28,7 +28,7 @@ public class Test02 {
 
     @BeforeTest
     public void beforeTest(){
-        driver = openApp(Device.PIXEL2, App.APIDEMO);
+        driver = openApp(Device.SAMSUNG_A33, App.APIDEMO);
         wait = new WebDriverWait(driver, 20);
     }
 
