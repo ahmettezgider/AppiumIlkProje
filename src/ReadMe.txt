@@ -4,7 +4,7 @@ Appium
 2.  JAVA SDK gerekli (JAVA_HOME olarak environmet variable'a eklenirse iyi olur.
     Normalde kurulum Path kismina ekleyecektir)
 3.  Android SDK lazim
-    a.  Android Strudio kurulursa otomatik kurulur
+    a.  Android Studio kurulursa otomatik kurulur
     b.  IntelliJ icinde yeni proje olarak Android secilirse, Android SDK kurulu degilse kurulmasi icin uyarir.
         Buradan Android SDK kurulabilir.
         Normalde c:\users\{kullanici}\AppData\Local\Android\Sdk

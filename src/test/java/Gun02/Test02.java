@@ -23,6 +23,7 @@ public class Test02 {
     AppiumDriver<?> driver;
     WebDriverWait wait;
 
+    By cancel = By.id("com.android.permissioncontroller:id/cancel_button");
     By accesibility = By.xpath("//android.widget.TextView[@content-desc='Accessibility']");
     By customView = By.xpath("//android.widget.TextView[@content-desc=\"Custom View\"]");
 
@@ -35,6 +36,7 @@ public class Test02 {
 
     @Test
     public void test1(){
+        wait.until(ExpectedConditions.elementToBeClickable(cancel)).click();
         wait.until(ExpectedConditions.elementToBeClickable(accesibility)).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(customView));
         driver.navigate().back();

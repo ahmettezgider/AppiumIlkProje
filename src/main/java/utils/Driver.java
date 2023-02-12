@@ -1,6 +1,5 @@
 package utils;
 
-
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -37,13 +36,15 @@ public class Driver {
 
 
     private static DesiredCapabilities setCaps(Device device, App app){
-        String apk = "src/main/resources/ApiDemos.zip";
+        String apk = "src/main/resources/";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("appium:udid", device.udid);
         capabilities.setCapability("appium:version", device.version);
         capabilities.setCapability("appium:deviceName", device.deviceName);
         capabilities.setCapability("platformName", device.platformName);
-        capabilities.setCapability("appium:app", apk);
+
+        if (app.apk.length()>0)
+            capabilities.setCapability("appium:app", apk + app.apk);
 
 
         capabilities.setCapability("appium:appPackage", app.appPackage);

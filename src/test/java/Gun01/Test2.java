@@ -11,6 +11,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
 
 import java.net.MalformedURLException;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class Test2 {
 
@@ -32,7 +34,7 @@ public class Test2 {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         // cihaz ya da emülatör bilgileri
-        capabilities.setCapability("appium:udid", "emulator-5554");
+        capabilities.setCapability("appium:udid", "RZCT40MN7MY");
         capabilities.setCapability("appium:version", "11");
         capabilities.setCapability("appium:deviceName", "Pixel2");
         capabilities.setCapability("platformName", "Android");
@@ -44,7 +46,9 @@ public class Test2 {
         AppiumDriver<MobileElement> driver;
 
         driver = new AndroidDriver<>(service.getUrl(), capabilities);
-
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.findElement(By.id("com.android.permissioncontroller:id/continue_button")).click();
+        driver.findElement(By.id("android:id/button1")).click();
         driver.findElement(By.xpath("//android.widget.TextView[@content-desc='Accessibility']")).click();
 
         driver.closeApp();
