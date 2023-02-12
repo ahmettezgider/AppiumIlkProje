@@ -46,6 +46,7 @@ public class Test2 {
         AppiumDriver<MobileElement> driver;
 
         driver = new AndroidDriver<>(service.getUrl(), capabilities);
+
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(By.id("com.android.permissioncontroller:id/continue_button")).click();
         driver.findElement(By.id("android:id/button1")).click();

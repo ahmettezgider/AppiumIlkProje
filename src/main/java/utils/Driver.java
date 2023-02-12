@@ -36,7 +36,7 @@ public class Driver {
 
 
     private static DesiredCapabilities setCaps(Device device, App app){
-        String apk = "src/main/resources/";
+        String apkDest = "src/main/resources/";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("appium:udid", device.udid);
         capabilities.setCapability("appium:version", device.version);
@@ -44,7 +44,7 @@ public class Driver {
         capabilities.setCapability("platformName", device.platformName);
 
         if (app.apk.length()>0)
-            capabilities.setCapability("appium:app", apk + app.apk);
+            capabilities.setCapability("appium:app", apkDest + app.apk);
 
 
         capabilities.setCapability("appium:appPackage", app.appPackage);

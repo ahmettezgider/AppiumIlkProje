@@ -10,15 +10,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
 import utils.App;
+import utils.Deneme1;
 import utils.Device;
 
 import java.net.MalformedURLException;
+import java.util.concurrent.TimeUnit;
 
 public class Test3 {
 
     AppiumDriverLocalService service;
 
-    Device device = Device.PIXEL2;
+    Device device = Device.SAMSUNG_A33;
     App app = App.APIDEMO;
 
     @Test
@@ -43,11 +45,13 @@ public class Test3 {
 
         driver = new AndroidDriver<>(service.getUrl(), capabilities);
 
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.findElement(By.id("com.android.permissioncontroller:id/continue_button")).click();
+        driver.findElement(By.id("android:id/button1")).click();
         driver.findElement(By.xpath("//android.widget.TextView[@content-desc='Accessibility']")).click();
 
         driver.closeApp();
         service.stop();
-
     }
 
 }
