@@ -7,6 +7,8 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.util.concurrent.TimeUnit;
+
 public class Driver {
 
     private static AppiumDriver<MobileElement> driver;
@@ -29,6 +31,7 @@ public class Driver {
 
     public static AppiumDriver<MobileElement> getDriver(Device device, App app){
         driver = new AndroidDriver<>(service.getUrl(), setCaps(device, app));
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return driver;
 
     }

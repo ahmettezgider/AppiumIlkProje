@@ -4,22 +4,48 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import utils.App;
 import utils.Device;
 import utils.Driver;
 
 public class Test4 {
-    @Test
-    public void test1(){
+    By lContinue = By.id("com.android.permissioncontroller:id/continue_button");
+    By lOkButton = By.id("android:id/button1");
+    By lAccessibility = By.xpath("//android.widget.TextView[@content-desc='Accessibility']");
+
+    AppiumDriver<MobileElement> driver;
+    @BeforeTest
+    public void beforeTest(){
         Driver.runAppium();
 
-        AppiumDriver<MobileElement> driver = Driver.getDriver(Device.SAMSUNG_A33, App.APIDEMO);
+        driver = Driver.getDriver(Device.SAMSUNG_A33, App.APIDEMO);
+    }
 
-        driver.findElement(By.id("com.android.permissioncontroller:id/continue_button")).click();
-        driver.findElement(By.id("android:id/button1")).click();
-        driver.findElement(By.xpath("//android.widget.TextView[@content-desc='Accessibility']")).click();
-
+    @AfterTest
+    public void afterTest(){
+        driver.quit();
         Driver.stopAppium();
+    }
+
+    @Test
+    public void test1(){
+        driver.findElement(lContinue).click();
+        driver.findElement(lOkButton).click();
+        driver.findElement(lAccessibility).click();
+
+    }
+
+    @Test
+    public void test2(){
+        click(lContinue);
+        click(lOkButton);
+        click(lAccessibility);
+    }
+
+    void click(By locator){
+        Driver.getDriver().findElement(locator).click();
     }
 }
