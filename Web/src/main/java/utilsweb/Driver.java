@@ -10,6 +10,9 @@ public class Driver {
     public static ThreadLocal<WebDriver> drivers = new ThreadLocal<>();
 
     public static WebDriver getDriver(){
+        /*
+            Bu driver ile test edilecek web sayfasi, pc'deki chrome ile yapilir
+         */
         if (drivers.get() == null){
             WebDriverManager.chromedriver().setup();
             drivers.set(new ChromeDriver());
@@ -18,6 +21,9 @@ public class Driver {
     }
 
     public static WebDriver getMobilDriver(){
+        /*
+            Bu driver ile test edilecek web sayfasi, bagli mobil cihazdaki chrome ile yapilir
+         */
         if (drivers.get() == null){
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
