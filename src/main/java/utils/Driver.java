@@ -31,7 +31,7 @@ public class Driver {
 
     public static AppiumDriver<MobileElement> getDriver(Device device, App app){
         driver = new AndroidDriver<>(service.getUrl(), setCaps(device, app));
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         return driver;
 
     }

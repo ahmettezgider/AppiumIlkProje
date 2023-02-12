@@ -90,6 +90,7 @@ public class Scroll1 {
                 .moveTo(PointOption.point(w/2, (int)(h*stopPoint)))
                 .release()
                 .perform();
+
     }
 
     /**
