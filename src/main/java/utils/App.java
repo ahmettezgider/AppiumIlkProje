@@ -2,7 +2,7 @@ package utils;
 
 public enum App {
 
-    APIDEMO("io.appium.android.apis","ApiDemos", "ApiDemos.zip"),
+    APIDEMO("io.appium.android.apis","ApiDemos", ""),
     CALCULATOR("com.sec.android.app.popupcalculator","Calculator", "")
     ;
 
